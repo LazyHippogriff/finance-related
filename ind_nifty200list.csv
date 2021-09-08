@@ -1,4 +1,4 @@
-Criteria-> stable positive net income, 0 pledging of shares, RoE > 10% & RoCE > 10%
+Criteria-> stable positive net income & stable uptrend,  0 pledging of shares, RoE > 10% & RoCE > 10% & have been in market since >= 10 yrs.
 Company Name,Industry,Symbol
 ACC Ltd.,CEMENT & CEMENT PRODUCTS,ACC
 Bajaj Auto Ltd.,AUTOMOBILE,BAJAJ-AUTO
@@ -6,35 +6,28 @@ Bombay Burmah Trading Corporation Ltd.,CONSUMER GOODS,BBTC
 Britannia Industries Ltd.,CONSUMER GOODS,BRITANNIA
 Castrol India Ltd.,OIL & GAS,CASTROLIND
 Cipla Ltd.,PHARMA,CIPLA
-Coal India Ltd.,METALS,COALINDIA
 Coforge Ltd.,IT,COFORGE
 Colgate Palmolive (India) Ltd.,CONSUMER GOODS,COLPAL
 Dabur India Ltd.,CONSUMER GOODS,DABUR
-Dr. Lal Path Labs Ltd.,HEALTHCARE SERVICES,LALPATHLAB
 Dr. Reddy's Laboratories Ltd.,PHARMA,DRREDDY
 Eicher Motors Ltd.,AUTOMOBILE,EICHERMOT
 Gujarat State Petronet Ltd.,OIL & GAS,GSPL
 HCL Technologies Ltd.,IT,HCLTECH
-HDFC Asset Management Company Ltd.,FINANCIAL SERVICES,HDFCAMC
 Hero MotoCorp Ltd.,AUTOMOBILE,HEROMOTOCO
 Hindustan Unilever Ltd.,CONSUMER GOODS,HINDUNILVR
 ICICI Lombard General Insurance Company Ltd.,FINANCIAL SERVICES,ICICIGI
 ITC Ltd.,CONSUMER GOODS,ITC
-Indian Railway Catering And Tourism Corporation Ltd.,SERVICES,IRCTC
 Infosys Ltd.,IT,INFY
 Ipca Laboratories Ltd.,PHARMA,IPCALAB
 L&T Technology Services Ltd.,IT,LTTS
-Larsen & Toubro Infotech Ltd.,IT,LTI
 Marico Ltd.,CONSUMER GOODS,MARICO
 MindTree Ltd.,IT,MINDTREE
 MphasiS Ltd.,IT,MPHASIS
 Nestle India Ltd.,CONSUMER GOODS,NESTLEIND
-Nippon Life India Asset Management Ltd.,FINANCIAL SERVICES,NAM-INDIA
 Petronet LNG Ltd.,OIL & GAS,PETRONET
 Pfizer Ltd.,PHARMA,PFIZER
 Pidilite Industries Ltd.,CHEMICALS,PIDILITIND
 Sanofi India Ltd.,PHARMA,SANOFI
-Sun TV Network Ltd.,MEDIA ENTERTAINMENT & PUBLICATION,SUNTV
 Tata Consultancy Services Ltd.,IT,TCS
 Tata Elxsi Ltd.,IT,TATAELXSI
 Tech Mahindra Ltd.,IT,TECHM
