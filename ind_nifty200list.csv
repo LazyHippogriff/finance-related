@@ -1,4 +1,4 @@
-Criteria-> stable positive net income & stable uptrend,  0 pledging of shares, RoE > 10% & RoCE > 10% & have been in market since >= 10 yrs.
+Criteria-> stable positive net income & stable uptrend,  0 pledging of shares, RoE > 10% & RoCE > 10% & have been in market since >= 10 yrs & price < 5K.
 Company Name,Industry,Symbol
 ACC Ltd.,CEMENT & CEMENT PRODUCTS,ACC
 Bajaj Auto Ltd.,AUTOMOBILE,BAJAJ-AUTO
@@ -6,10 +6,8 @@ Bombay Burmah Trading Corporation Ltd.,CONSUMER GOODS,BBTC
 Britannia Industries Ltd.,CONSUMER GOODS,BRITANNIA
 Castrol India Ltd.,OIL & GAS,CASTROLIND
 Cipla Ltd.,PHARMA,CIPLA
-Coforge Ltd.,IT,COFORGE
 Colgate Palmolive (India) Ltd.,CONSUMER GOODS,COLPAL
 Dabur India Ltd.,CONSUMER GOODS,DABUR
-Dr. Reddy's Laboratories Ltd.,PHARMA,DRREDDY
 Eicher Motors Ltd.,AUTOMOBILE,EICHERMOT
 Gujarat State Petronet Ltd.,OIL & GAS,GSPL
 HCL Technologies Ltd.,IT,HCLTECH
@@ -23,13 +21,9 @@ L&T Technology Services Ltd.,IT,LTTS
 Marico Ltd.,CONSUMER GOODS,MARICO
 MindTree Ltd.,IT,MINDTREE
 MphasiS Ltd.,IT,MPHASIS
-Nestle India Ltd.,CONSUMER GOODS,NESTLEIND
 Petronet LNG Ltd.,OIL & GAS,PETRONET
-Pfizer Ltd.,PHARMA,PFIZER
 Pidilite Industries Ltd.,CHEMICALS,PIDILITIND
-Sanofi India Ltd.,PHARMA,SANOFI
 Tata Consultancy Services Ltd.,IT,TCS
-Tata Elxsi Ltd.,IT,TATAELXSI
 Tech Mahindra Ltd.,IT,TECHM
 Torrent Pharmaceuticals Ltd.,PHARMA,TORNTPHARM
 Whirlpool of India Ltd.,CONSUMER GOODS,WHIRLPOOL
