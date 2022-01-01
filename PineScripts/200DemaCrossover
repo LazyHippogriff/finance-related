@@ -2,16 +2,43 @@
 // © LazyHippogriff
 
 //@version=5
-strategy("My Strategy", overlay=true, close_entries_rule="ANY", pyramiding=10,process_orders_on_close=true)
+strategy("200DEMACrossover", overlay=true, close_entries_rule="ANY", pyramiding=50,process_orders_on_close=true)
 
-strategyEntryID = "long_" + str.tostring(bar_index) //tostring converts int to string
-strategyExitID = "exit_" + strategyEntryID
+strategyEntryID_05 = "long_05_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_05 = "exit_05_" + strategyEntryID_05
+
+strategyEntryID_10 = "long_10_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_10 = "exit_10_" + strategyEntryID_10
+
+strategyEntryID_15 = "long_15_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_15 = "exit_15_" + strategyEntryID_15
+
+strategyEntryID_20 = "long_20_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_20 = "exit_20_" + strategyEntryID_20
+
+strategyEntryID_25 = "long_25_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_25 = "exit_25_" + strategyEntryID_25
 
 
 longCondition = ta.crossover(close, ta.ema(ohlc4, 200))
 if (longCondition)
-    strategy.entry(strategyEntryID, strategy.long)
-    longExitPrice = high * 1.15
-    strategy.exit(strategyExitID,strategyEntryID,limit=longExitPrice)
+    strategy.entry(strategyEntryID_05, strategy.long,comment="Target_05%")
+    strategy.entry(strategyEntryID_10, strategy.long,comment="Target_10%")
+    strategy.entry(strategyEntryID_15, strategy.long,comment="Target_15%")
+    strategy.entry(strategyEntryID_20, strategy.long,comment="Target_20%")
+    strategy.entry(strategyEntryID_25, strategy.long,comment="Target_25%")
+    
+    longExitPrice_05 = high * 1.05
+    longExitPrice_10 = high * 1.10
+    longExitPrice_15 = high * 1.15
+    longExitPrice_20 = high * 1.20
+    longExitPrice_25 = high * 1.25
+    
+    strategy.exit(strategyExitID_05,strategyEntryID_05,limit=longExitPrice_05,comment="Target_05%")
+    strategy.exit(strategyExitID_10,strategyEntryID_10,limit=longExitPrice_10,comment="Target_10%")
+    strategy.exit(strategyExitID_15,strategyEntryID_15,limit=longExitPrice_15,comment="Target_15%")
+    strategy.exit(strategyExitID_20,strategyEntryID_20,limit=longExitPrice_20,comment="Target_20%")
+    strategy.exit(strategyExitID_25,strategyEntryID_25,limit=longExitPrice_25,comment="Target_25%")
 
 plot(ta.ema(ohlc4,200))
+
