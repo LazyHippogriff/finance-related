@@ -1,0 +1,17 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+strategy("My Strategy", overlay=true, close_entries_rule="ANY", pyramiding=10,process_orders_on_close=true)
+
+strategyEntryID = "long_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID = "exit_" + strategyEntryID
+
+
+longCondition = ta.crossover(close, ta.ema(ohlc4, 200))
+if (longCondition)
+    strategy.entry(strategyEntryID, strategy.long)
+    longExitPrice = high * 1.15
+    strategy.exit(strategyExitID,strategyEntryID,limit=longExitPrice)
+
+plot(ta.ema(ohlc4,200))
