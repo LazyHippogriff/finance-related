@@ -39,6 +39,5 @@ if (longCondition)
     strategy.exit(strategyExitID_4,strategyEntryID_4,limit=longExitPrice_4,comment="Target_4%")
     
 plot(ta.highest(high,6))
-plot(high[1])
 plot(low[1])
 plot(ta.sma(low,6))
