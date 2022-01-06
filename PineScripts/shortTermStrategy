@@ -1,0 +1,44 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+strategy("shortTermTradingPlan", overlay=true, close_entries_rule="ANY", pyramiding=50000,process_orders_on_close=true)
+
+strategyEntryID_1 = "long_1_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_1 = "exit_1_" + strategyEntryID_1
+
+strategyEntryID_2 = "long_2_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_2 = "exit_2_" + strategyEntryID_2
+
+strategyEntryID_3 = "long_3_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_3 = "exit_3_" + strategyEntryID_3
+
+strategyEntryID_4 = "long_4_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID_4 = "exit_4_" + strategyEntryID_4
+
+
+//longCondition = (high > ta.highest(high,3)) and (low > ta.sma(low,3)) and (close > high[1]) and (low > low[1])
+longCondition = (high >= ta.highest(high,6)) and (low > ta.sma(low,6)) and (close > high[1]) and (low > low[1]) and time>timestamp(2000, 01, 01, 00, 00) 
+
+if (longCondition)
+    strategy.entry(strategyEntryID_1, strategy.long,comment="Target_1%")
+    strategy.entry(strategyEntryID_2, strategy.long,comment="Target_2%")
+    strategy.entry(strategyEntryID_3, strategy.long,comment="Target_3%")
+    strategy.entry(strategyEntryID_4, strategy.long,comment="Target_4%")
+    
+    
+    longExitPrice_1 = math.ceil(high * 1.01)
+    longExitPrice_2 = math.ceil(high * 1.02)
+    longExitPrice_3 = math.ceil(high * 1.03)
+    longExitPrice_4 = math.ceil(high * 1.04)
+
+    
+    strategy.exit(strategyExitID_1,strategyEntryID_1,limit=longExitPrice_1,comment="Target_1%")
+    strategy.exit(strategyExitID_2,strategyEntryID_2,limit=longExitPrice_2,comment="Target_2%")
+    strategy.exit(strategyExitID_3,strategyEntryID_3,limit=longExitPrice_3,comment="Target_3%")
+    strategy.exit(strategyExitID_4,strategyEntryID_4,limit=longExitPrice_4,comment="Target_4%")
+    
+plot(ta.highest(high,6))
+plot(high[1])
+plot(low[1])
+plot(ta.sma(low,6))
