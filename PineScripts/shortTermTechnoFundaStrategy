@@ -1,0 +1,87 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+strategy("customReversalTrackerStrategy", overlay=true, close_entries_rule="ANY", pyramiding=50000)
+
+i_referencePoint = input(3,"referencePoint")
+i_nBars = input(5,"nBars")
+i_countPeriod = input(10,"countPeriod")
+i_targetPercentage = input(2,"targetPercentage")
+
+properUptrend = math.sum(close >= ta.highest(high[i_referencePoint],i_nBars) ? 1 : 0, i_countPeriod)
+properDowntrend = math.sum(close <= ta.lowest(low[i_referencePoint],i_nBars) ? 1 : 0, i_countPeriod)
+
+reversalTrack = properUptrend-properDowntrend
+
+strategyEntryID = "long_" + str.tostring(i_targetPercentage) + "_" + str.tostring(bar_index) //tostring converts int to string
+strategyExitID = "exit_" + str.tostring(i_targetPercentage) + "_" + strategyEntryID
+
+targetString = "-Target_" + str.tostring(i_targetPercentage) + "%"
+
+longCondition = ta.crossover(reversalTrack, 0)
+
+if (longCondition)
+    currentDate = str.tostring(dayofmonth) + "/" + str.tostring(month) + "/" + str.tostring(year)
+    
+    entryCommentString = "open_" + currentDate + targetString
+    exitCommentString = "close_" + currentDate
+    
+    strategy.entry(strategyEntryID, strategy.long,comment=entryCommentString)
+    
+    longExitPrice = high * (1 + (i_targetPercentage/100))
+    
+    strategy.exit(strategyExitID,strategyEntryID,limit=longExitPrice,comment=exitCommentString)
+
+
+
+
+
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+indicator("reversalTracker_price")
+
+i_referencePoint = input(3,"referencePoint")
+i_nBars = input(5,"nBars")
+
+plot(ta.highest(high[i_referencePoint],i_nBars),color=color.new(color.green,0))
+plot(ta.lowest(low[i_referencePoint],i_nBars),color=color.new(color.red,0))
+
+
+
+
+
+
+
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+indicator("reversalTracker_signals")
+
+i_referencePoint = input(3,"referencePoint")
+i_nBars = input(5,"nBars")
+i_countPeriod = input(10,"countPeriod")
+
+properUptrend = math.sum(close >= ta.highest(high[i_referencePoint],i_nBars) ? 1 : 0, i_countPeriod)
+properDowntrend = math.sum(close <= ta.lowest(low[i_referencePoint],i_nBars) ? 1 : 0, i_countPeriod)
+
+plot(properUptrend,color=color.new(color.green,0),trackprice=true)
+plot(properDowntrend,color=color.new(color.red,0),trackprice=true)
+
+
+
+
+//@version=5
+indicator("reversalTracker_value")
+
+i_referencePoint = input(3,"referencePoint")
+i_nBars = input(5,"nBars")
+i_countPeriod = input(10,"countPeriod")
+
+properUptrend = math.sum(close >= ta.highest(high[i_referencePoint],i_nBars) ? 1 : 0, i_countPeriod)
+properDowntrend = math.sum(close <= ta.lowest(low[i_referencePoint],i_nBars) ? 1 : 0, i_countPeriod)
+
+plot(properUptrend-properDowntrend,color=color.new(color.black, 0),trackprice=true)
