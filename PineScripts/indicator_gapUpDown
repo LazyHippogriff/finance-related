@@ -1,0 +1,25 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+indicator("gap_up_down",overlay=true, precision=3)
+
+percentage = input.float(2,"percentage")
+
+magnitude = 1 + percentage/100
+if(open > magnitude * close[1])
+    diff = ((open - close[1])/close[1]) * 100
+    diffLabel = str.tostring(diff,'#.#')
+    labelText = diffLabel + "%_" + str.tostring(dayofmonth(time)) + "/" + str.tostring(month(time)) + "/" + str.tostring(year(time))
+    label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.green, textcolor=color.white, 
+     style = label.style_label_up, size=size.normal)
+
+if(close[1] > magnitude * open)
+    diff = ((close[1]-open)/open) * 100
+    diffLabel = str.tostring(diff,'#.#')
+    labelText = diffLabel + "%_" + str.tostring(dayofmonth(time)) + "/" + str.tostring(month(time)) + "/" + str.tostring(year(time))
+    label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.red, textcolor=color.white, 
+     style = label.style_label_up, size=size.normal)
+     
+     
+
