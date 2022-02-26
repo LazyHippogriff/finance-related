@@ -5,8 +5,19 @@
 indicator("rangeExpansion",overlay=true, max_labels_count=500)
 
 rollingWindow = input(10,"rollingWindow")
-rangeVar = high - low
-if(rangeVar > ta.highest(rangeVar[1],rollingWindow))
+
+rangeVar1 = math.max(high,close[1])-math.min(low,close[1])
+
+if(rangeVar1 > ta.highest(rangeVar1[1],rollingWindow))
     labelText = ""
-    label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.green, textcolor=color.white, 
-     style = label.style_label_up, size=size.normal)
+    if(high > high[1] and low > low[1])
+        label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.green, textcolor=color.white, 
+         style = label.style_label_up, size=size.normal)
+    else if(high < high[1] and low < low[1])
+        label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.red, textcolor=color.white, 
+         style = label.style_label_up, size=size.normal)
+    else
+        label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.yellow, textcolor=color.white, 
+         style = label.style_label_up, size=size.normal)
+
+ 
