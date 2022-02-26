@@ -1,0 +1,69 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © LazyHippogriff
+
+//@version=5
+strategy("strategy_tradingRangeExpansion", overlay=true, close_entries_rule="ANY", pyramiding=50000)
+
+rollingWindow = input(10,"rollingWindow")
+i_targetPercentage = input.float(2,"targetPercentage",minval=0.0, step=0.1)
+
+targetString = "-Target_" + str.tostring(i_targetPercentage) + "%"
+
+var refPrice = array.new<float>(0)
+var refDate = array.new<string>(0)
+var entryIDs = array.new<string>(0)
+var exitIDs = array.new<string>(0)
+
+
+rangeVar = math.max(high,close[1])-math.min(low,close[1])
+
+closePositions(entryIdArray, exitIdArray) =>
+    n = array.size(entryIdArray) - 1
+    longExitPrice = open * (1 + (i_targetPercentage/100))
+    for i = 0 to n
+        strategy.exit(array.get(exitIdArray,i),array.get(entryIdArray,i),limit=longExitPrice,comment=array.get(exitIdArray,i) + "_buyPrice="+str.tostring(open)+"_sellPrice=" + str.tostring(longExitPrice))
+
+    array.clear(entryIdArray)
+    array.clear(exitIdArray)
+        
+        
+
+createEntry(priceArr, dateArr) =>
+    n = array.size(priceArr) - 1
+    idx=0
+    for i = 0 to n
+        if(close > array.get(priceArr,idx))
+            strategyEntryID = "buy_" + array.get(dateArr,idx) + targetString
+            strategyExitID = "sell_" + array.get(dateArr,idx)
+            
+            array.push(entryIDs,strategyEntryID)
+            array.push(exitIDs, strategyExitID)
+            
+            strategy.entry(strategyEntryID, strategy.long)
+
+            array.remove(priceArr,idx)
+            array.remove(dateArr,idx)
+            
+            n := n-1
+
+        else
+            idx := idx + 1
+    
+    array.size(priceArr)
+
+idArrSize = array.size(entryIDs)
+if(idArrSize > 0)
+    closePositions(entryIDs, exitIDs)
+
+arraySize = array.size(refPrice)
+if(arraySize > 0)
+    createEntry(refPrice,refDate)
+
+if(rangeVar > ta.highest(rangeVar[1],rollingWindow))
+    labelText = ""
+    if(high > high[1] and low > low[1])
+        label_test = label.new(x=bar_index,y=na,text=labelText,yloc=yloc.belowbar, color=color.green, textcolor=color.white, 
+         style = label.style_label_up, size=size.normal)
+        array.push(refPrice,high)
+        currentDate = str.tostring(dayofmonth) + "/" + str.tostring(month) + "/" + str.tostring(year)
+        array.push(refDate,currentDate)
