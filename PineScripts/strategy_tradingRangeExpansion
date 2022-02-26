@@ -67,3 +67,27 @@ if(rangeVar > ta.highest(rangeVar[1],rollingWindow))
         array.push(refPrice,high)
         currentDate = str.tostring(dayofmonth) + "/" + str.tostring(month) + "/" + str.tostring(year)
         array.push(refDate,currentDate)
+        
+        
+************* Data *****************
+Stock	1.50%	2.00%	2.50%	3.00%		Target
+	Avg Time(in days)	Avg Time(in days)	Avg Time(in days)	Avg Time(in days)		
+Marico	20	24	27	30		2.50%
+ICICIGI	12	18	18	21		3.00%
+NAM_INDIA	15	15	15	18		3.00%
+kotakbank	18	24				2.00%
+astral	21	21	24			2.50%
+divislab	30	33	33	33		3.00%
+godrejcp	24	36				1.50%
+lalpathlab	12	18	21	21		3.00%
+galaxysurf	12	15	33	36		2.00%
+gmmpfaudlr	18	21	21	21		3.00%
+asianpaint	30	33	36	36		3.00%
+pidilitind	24	24	27	27		2.00%
+ltts	24	24	24	27		2.50%
+hdfclife	24	30	33	33		3.00%
+tcs	27	33	39	42		2.00%
+grindwell	27	27	36	36		2.00%
+sbilife	15			15		3.00%
+pageind	18	21	24	24		3.00%
+						
